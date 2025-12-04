@@ -1,0 +1,32 @@
+# --- CHUNG CHO CẢ DỰ ÁN ---
+# Bỏ qua thư viện tải về (Rất nặng!)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Bỏ qua file biến môi trường (Chứa mật khẩu, API key)
+.env
+.env.local
+.env.*.local
+
+# Bỏ qua file log lỗi
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+
+# File hệ thống / Trình soạn thảo (Rác)
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- DÀNH RIÊNG CHO BACKEND ---
+# Quan trọng: Bỏ qua dữ liệu Database của Docker
+backend/mongodbdata/
+
+# --- DÀNH RIÊNG CHO FRONTEND (REACT) ---
+# Thư mục build ra sản phẩm cuối (không cần up source)
+student-management/build/
+student-management/dist/
