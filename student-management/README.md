@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# 🎓 Ứng Dụng Quản Lý Học Sinh (MERN Stack + Docker)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Đây là ứng dụng web quản lý học sinh đơn giản nhưng đầy đủ tính năng, được xây dựng theo mô hình **MERN Stack** (MongoDB, Express, React, Node.js). Dự án sử dụng **Docker** để khởi tạo database và **Bootstrap** để tối ưu hóa giao diện người dùng.
 
-## Available Scripts
+## 🚀 Tính Năng Chính
 
-In the project directory, you can run:
+* **Quản lý dữ liệu (CRUD):**
+    * Xem danh sách học sinh.
+    * Thêm học sinh mới (có kiểm tra dữ liệu đầu vào: Tên > 2 ký tự, Tuổi 6-100).
+    * Sửa thông tin học sinh.
+    * Xóa học sinh (có hộp thoại xác nhận an toàn).
+* **Tìm kiếm & Sắp xếp:**
+    * Tìm kiếm học sinh theo tên (Server-side Filtering).
+    * Sắp xếp danh sách theo Tên, Tuổi, Lớp (Click vào tiêu đề cột).
+* **Giao diện:**
+    * Responsive, đẹp mắt sử dụng Bootstrap 5.
+    * Thông báo phản hồi (Toast/Alert) khi thao tác thành công hoặc lỗi.
 
-### `npm start`
+## 🛠️ Công Nghệ Sử Dụng
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+* **React.js**: Thư viện xây dựng giao diện.
+* **Axios**: Gọi API tới Backend.
+* **Bootstrap 5**: CSS Framework.
+* **React Router DOM**: Điều hướng trang.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
+* **Node.js & Express**: RESTful API Server.
+* **Mongoose**: ODM làm việc với MongoDB.
+* **Cors**: Xử lý Cross-Origin Resource Sharing.
 
-### `npm test`
+### Database & DevOps
+* **MongoDB**: Cơ sở dữ liệu NoSQL.
+* **Docker & Docker Compose**: Đóng gói và chạy container MongoDB.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ⚙️ Hướng Dẫn Cài Đặt
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Yêu cầu tiên quyết
+* [Node.js](https://nodejs.org/) (v14 trở lên).
+* [Docker Desktop](https://www.docker.com/products/docker-desktop) (đã cài đặt và đang chạy).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Cài đặt & Chạy dự án
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Dự án gồm 2 thư mục chính: `backend` và `student-management` (frontend).
 
-### `npm run eject`
+#### Bước 1: Khởi động Database (Docker)
+Di chuyển vào thư mục backend và chạy MongoDB:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+cd backend
+# Khởi tạo container MongoDB (cổng 27017)
+docker-compose up -d
+Lưu ý: Đảm bảo bạn đã tắt MongoDB Service cài sẵn trên máy (nếu có) để tránh xung đột cổng 27017.
+Bước 2: Khởi động Backend Server
+Tại thư mục backend, cài đặt thư viện và chạy server:
+npm install
+node index.js
+Server sẽ chạy tại: http://localhost:5000
+Bước 3: Khởi động Frontend (React)
+Mở một terminal mới, di chuyển vào thư mục frontend:
+cd ../student-management
+npm install
+npm start
+Trang web sẽ tự động mở tại: http://localhost:3000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🐛 Khắc Phục Lỗi Thường Gặp
+1. Lỗi kết nối MongoDB (Connection Refused)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Kiểm tra Docker Desktop đã bật chưa.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Kiểm tra xem có MongoDB nào khác đang chạy chiếm cổng 27017 không.
 
-## Learn More
+2. Lỗi CORS ở Frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Backend đã được cài đặt cors và app.use(cors()). Hãy chắc chắn bạn đã khởi động lại backend sau khi sửa code.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Không cài được npm install
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Xóa thư mục node_modules và file package-lock.json rồi chạy lại npm install
